@@ -50,3 +50,14 @@ Formato de entrada:
   que consulten, actualicen o modifiquen una Knowledge Base montada sobre especificaciones.
 - **Efecto:** `CLAUDE.md §3`; `perfil.md §5`.
 - **Estado:** Activa
+
+## D-004 — Commits directamente sobre main
+
+- **Fecha:** 2026-08-14
+- **Origen:** Mensaje del usuario ("Puedes hacer todos los commits sobre main directamente").
+- **Decisión:** El mantenimiento de este repositorio se hace commiteando directamente sobre
+  `main`, sin ramas intermedias ni Pull Requests, salvo indicación en contra del usuario.
+- **Efecto:** `CLAUDE.md §1` (ámbito / flujo de mantenimiento). No afecta al contenido de los
+  agentes generados: la prohibición Git del R3 sigue siendo obligatoria dentro de cada agente
+  (control BBVA_ASI01_05_02).
+- **Estado:** Activa

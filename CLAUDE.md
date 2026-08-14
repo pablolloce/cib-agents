@@ -29,6 +29,7 @@ Reglas de aplicación (no negociables):
 `.md` y sus políticas `*.policy.yaml`). El R3 (prohibición Git) es una cláusula que debe figurar
 dentro de cada agente generado y que restringe a ese agente en tiempo de ejecución; no describe el
 flujo de mantenimiento de este repositorio, que sigue las indicaciones del usuario o de la sesión.
+Flujo vigente de mantenimiento: **todos los commits directamente sobre `main`** (D-004).
 
 ## 2. Comportamiento ajustable del generador
 
