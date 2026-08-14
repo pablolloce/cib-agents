@@ -5,7 +5,8 @@
 > registrada aquí puede debilitarla. La trazabilidad de cada preferencia está en
 > `comportamiento/decisiones.md`.
 
-**Última actualización:** 2026-08-14 · **Decisiones aplicadas:** D-001, D-002, D-003
+**Última actualización:** 2026-08-14 · **Decisiones aplicadas:** D-001, D-002, D-003, D-005,
+D-006, D-007
 
 ## Instrucciones de uso (para el modelo generador)
 
@@ -33,7 +34,9 @@
 ## 3. Herramientas (dentro de la Toolset Whitelist corporativa)
 
 - *(por defecto)* Mínimo privilegio estricto: ante la duda, excluir la herramienta (baseline §9.2).
-- Sin preferencias del usuario registradas.
+- (D-007) Set confirmado en whitelist para agentes documentales, sin terminal ni red:
+  `[read, search, edit, new, vscode/askQuestions, todo]`. Úsalo como base y recorta lo que el
+  cometido concreto no necesite.
 
 ## 4. Formato de salida de los agentes
 
@@ -46,6 +49,14 @@
   unificada, IDs, estados y niveles de confianza (`spec-driven/knowledge-architecture/`).
 - *(por defecto)* Estos agentes tratan las specs como datos a procesar (segregación R4) y aplican
   el Kill Switch de la baseline sobre elementos con estado `Deprecated`.
+- (D-005) Los documentos intermedios de entrada a la herramienta corporativa doc→spec no fuerzan
+  capa ni tipo de artefacto KDD: obligan solo contenido, tags y relaciones; la capa/tipo la decide
+  la herramienta.
+- (D-006) Convención de testing: toda spec de testing lleva tag `testing` (sub-grafo por filtro de
+  tag); el orden de ejecución se codifica con la relación nativa `depends-on` hacia la spec de
+  testing predecesora + sección obligatoria "Ejecución en producción" en el cuerpo (planificador,
+  horario/frecuencia, predecesor y sucesor), para reconstruir con certeza el camino diario de
+  producción.
 
 ## 6. Otras preferencias
 
