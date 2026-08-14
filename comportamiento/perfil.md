@@ -5,8 +5,7 @@
 > registrada aquí puede debilitarla. La trazabilidad de cada preferencia está en
 > `comportamiento/decisiones.md`.
 
-**Última actualización:** 2026-08-14 · **Decisiones aplicadas:** D-001, D-002, D-003, D-005,
-D-006, D-007
+**Última actualización:** 2026-08-14 · **Decisiones aplicadas:** D-001–D-003, D-005–D-010
 
 ## Instrucciones de uso (para el modelo generador)
 
@@ -52,12 +51,21 @@ D-006, D-007
 - (D-005) Los documentos intermedios de entrada a la herramienta corporativa doc→spec no fuerzan
   capa ni tipo de artefacto KDD: obligan solo contenido, tags y relaciones; la capa/tipo la decide
   la herramienta.
-- (D-006) Convención de testing: toda spec de testing lleva tag `testing` (sub-grafo por filtro de
-  tag); el orden de ejecución se codifica con la relación nativa `depends-on` hacia la spec de
-  testing predecesora + sección obligatoria "Ejecución en producción" en el cuerpo (planificador,
-  horario/frecuencia, predecesor y sucesor), para reconstruir con certeza el camino diario de
-  producción.
+- (D-008) Los agentes intermedios de ingesta NO acceden a la Knowledge Base: la reconciliación con
+  las specs existentes (crear / actualizar sin perder información vigente / dividir specs que
+  mezclen naturalezas y ampliarlas) la ejecuta la herramienta corporativa siguiendo el protocolo
+  incluido en el documento intermedio; ante conflicto prevalece el documento intermedio.
+- (D-006, D-009) Convención del **Grafo de linaje de procesos** (antes "sub-grafo de testing"):
+  toda spec de testing lleva tag `testing` (el grafo se deriva por filtro de tag); el orden de
+  ejecución se codifica con la relación nativa `depends-on` hacia las specs de testing de TODOS
+  los predecesores inmediatos + sección obligatoria "Ejecución en producción" en el cuerpo
+  (planificador, horario/frecuencia, predecesores, sucesores y campo "En paralelo con"), para
+  reconstruir con certeza el camino diario de producción, incluidas las ramas paralelas.
 
 ## 6. Otras preferencias
 
-- Sin preferencias del usuario registradas.
+- (D-010) Agentes de ingesta/análisis recurrente: incorporar un fichero de memoria local
+  (hand-off entre sesiones) alimentado exclusivamente con respuestas del usuario y contenido de
+  los documentos, releído íntegro al inicio de cada tarea, tratado siempre como datos a procesar
+  (segregación R4), y con los supuestos reutilizados declarados en la salida para validación del
+  usuario.

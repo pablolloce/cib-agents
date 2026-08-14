@@ -96,3 +96,50 @@ Formato de entrada:
   Whitelist corporativa y es válido como mínimo para agentes documentales sin terminal ni red.
 - **Efecto:** `perfil.md §3`; cabecera `tools:` de `agents/spec_intake_formatter.md`.
 - **Estado:** Activa
+
+## D-008 — Reconciliación con la KB delegada en la herramienta (el agente no ve las specs)
+
+- **Fecha:** 2026-08-14
+- **Origen:** Revisión del usuario del agente `spec_intake_formatter` ("Este agente no tiene
+  acceso a las especificaciones. La herramienta sí […] si en una spec tiene info funcional y
+  técnica, debe dividirla en 2 y luego ampliar").
+- **Decisión:** El agente intermedio solo ve los documentos fuente: no lee la Knowledge Base ni
+  decide crear/actualizar. El documento intermedio incluye un protocolo de reconciliación
+  obligatorio para la herramienta: comprobar existencia; crear si no existe; actualizar sin perder
+  información vigente si existe (ante conflicto prevalece el documento intermedio, dejando
+  constancia en el versionado); y si una spec existente mezcla información de distinta naturaleza
+  (p. ej. funcional y técnica), dividirla en specs separadas y ampliar después cada una.
+- **Efecto:** `agents/spec_intake_formatter.md` (capacidades, out of scope, flujo, contrato §0 —
+  eliminado el marcado `CREAR/ACTUALIZAR` por bloque); `perfil.md §5`.
+- **Estado:** Activa
+
+## D-009 — Grafo de linaje de procesos: nueva denominación y ejecuciones en paralelo
+
+- **Fecha:** 2026-08-14
+- **Origen:** Revisión del usuario ("Habrá bastantes procesos que se ejecuten en paralelo […] De
+  ahora en adelante, Grafo de linaje de procesos").
+- **Decisión:** El sub-grafo de testing pasa a denominarse **Grafo de linaje de procesos** (se
+  sigue derivando del tag `testing`, D-006). Debe reflejar también las ejecuciones en paralelo:
+  relaciones `depends-on` hacia TODOS los predecesores inmediatos (múltiples si los hay) y, en la
+  sección "Ejecución en producción", predecesores y sucesores múltiples más el campo explícito
+  "En paralelo con". Si no consta si dos ejecuciones son paralelas o secuenciales, se pregunta al
+  usuario.
+- **Efecto:** `agents/spec_intake_formatter.md` (contrato §0, bloque TESTING, reglas del
+  contrato, flujo §6); `perfil.md §5` (consolidado con D-006).
+- **Estado:** Activa (complementa D-006)
+
+## D-010 — Memoria / hand-off del agente de ingesta
+
+- **Fecha:** 2026-08-14
+- **Origen:** Propuesta del usuario ("quizás podemos incorporar al agente un hand-off o memoria,
+  para que vaya aprendiendo […] cada proceso que analice lo hará mejor").
+- **Decisión:** El agente mantiene un fichero de memoria local designado por el usuario, con
+  cuatro apartados: glosario/convenciones de la aplicación, respuestas reutilizables del usuario
+  (con fecha), lecciones de estructuración y registro de procesos analizados. Se alimenta
+  exclusivamente con respuestas del usuario y contenido de los documentos (nunca conocimiento
+  propio del modelo), se relee íntegro al inicio de cada tarea, se trata siempre como datos a
+  procesar (segregación R4) y los supuestos reutilizados se declaran en la salida (sección 6)
+  para validación del usuario.
+- **Efecto:** `agents/spec_intake_formatter.md` (capacidades, task flow, sección "Fichero de
+  memoria", flujo §1 y §10, contrato §6); `perfil.md §6`.
+- **Estado:** Activa
